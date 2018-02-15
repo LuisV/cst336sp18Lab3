@@ -13,9 +13,17 @@
         'hand' => array(),
         'points'=> 0
         );
+        $player2 = array(
+            'name' => 'Emmanuel',
+            'imgURL' => './img/user_pics/player2.png',
+            'hands' => array(),
+            'points' => 0
+            );
         
         $allPlayers = array(
-            $player1);
+            $player1,
+            $player2
+            );
             
             function printGameStats($allPlayers) {
                 foreach ($allPlayers as $player) {
