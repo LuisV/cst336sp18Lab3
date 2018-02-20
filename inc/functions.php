@@ -2,7 +2,41 @@
     function play()
     {
         $allPlayers = playerArray();
-        printGameStats($allPlayers);
+        #printGameStats($allPlayers);
+        getDeck();
+    }
+    
+    function getDeck() 
+    {   
+        global $deck;
+        #$deck.append();
+        
+        
+        $test = array();
+        for($i = 0; $i < 4;$i++){
+            for($j = 1; $j <= 13; $j++){
+                switch($i){
+                    case(0):
+                        $suit = "clubs";
+                        break;
+                    case(1):
+                        $suit = "diamonds";
+                        break;
+                    case(2):
+                        $suit = "hearts";
+                        break;
+                    case(3):
+                        $suit = "spades";
+                        break;
+                }
+                array_push($test, "<img src='img/cards/$suit/$j.png'>");
+                shuffle($test);
+            }
+        }
+        for($i = 0; $i < 52; $i++)
+        {
+            echo ($test[$i]);
+        }
     }
     
     function playerArray()
