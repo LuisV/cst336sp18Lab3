@@ -1,11 +1,47 @@
 <?php
+
+class Card {
+    public $cardSuit;
+    public $cardFace;
+}
     function play()
     {
         $allPlayers = playerArray();
-        #printGameStats($allPlayers);
+        printGameStats($allPlayers);
         getDeck();
+        $deck = generateDeck();
+        #fix this
+        #displayCards();
     }
     
+    
+    
+    # Professors generate Deck function from class
+    function generateDeck() {
+        $suits = array("clubs", "spades", "hearts", "diamonds");
+        $deck = array();
+        for($i=0;$i<=3;$i++){
+            for($j=1;$j<=13;$j++){
+                $card = new Card;
+                $card->cardSuit = $suits[$i];
+                $card->cardValue = $j;
+                $deck[] = $card;
+            }
+        }
+        shuffle($deck);
+        return $deck;
+    }
+    
+    # Professors display card function
+    function displayCards() {
+        global $deck;
+        foreach($deck as $card){
+            echo $card->cardValue . " " . $card->cardSuit . "<br/>";
+        }
+    }
+    
+    
+    # MAYBE TRY 
     function getDeck() 
     {   
         global $deck;
