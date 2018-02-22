@@ -8,10 +8,10 @@ class Card {
     {
         $allPlayers = playerArray();
         printGameStats($allPlayers);
-        getDeck();
-        $deck = generateDeck();
-        #fix this
-        #displayCards();
+        #getDeck();
+        
+        
+        displayCards();
     }
     
     
@@ -22,21 +22,23 @@ class Card {
         $deck = array();
         for($i=0;$i<=3;$i++){
             for($j=1;$j<=13;$j++){
-                $card = new Card;
-                $card->cardSuit = $suits[$i];
-                $card->cardValue = $j;
+                $card = array(
+                    'suit' => $suits[$i],
+                    'value' => $j
+                );
                 $deck[] = $card;
+                
             }
         }
         shuffle($deck);
         return $deck;
     }
-    
+    $deck = generateDeck();
     # Professors display card function
     function displayCards() {
         global $deck;
-        foreach($deck as $card){
-            echo $card->cardValue . " " . $card->cardSuit . "<br/>";
+        foreach ($deck as $card){
+            echo $card['value'] . " " . $card['suit'] . "<br/>";
         }
     }
     
