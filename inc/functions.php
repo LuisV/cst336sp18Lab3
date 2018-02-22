@@ -113,5 +113,13 @@ class Card {
         }
         return $allPlayers;
     }
-    
+    function displayHand($player)
+    {
+        foreach ($player['hand'] as $card){
+                $value = $card['value'];
+                $suit = $card['suit'];
+                
+                echo "<img class= 'cards' src='img/cards/$suit/$value.png' alt= '$value of $suit'/>";
+            }
+    }
 ?>
