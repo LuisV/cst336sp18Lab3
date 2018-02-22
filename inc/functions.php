@@ -1,4 +1,9 @@
 <?php
+    class card{
+        public $suit;
+        public $value;
+    }
+    
     function play()
     {
         $allPlayers = playerArray();
