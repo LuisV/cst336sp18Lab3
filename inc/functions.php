@@ -8,9 +8,7 @@ class Card {
     {
         $allPlayers = playerArray();
         printGameStats($allPlayers);
-        
-        displayCards();
-        drawCards();
+        drawHand($allPlayers);
     }
     
     function playerArray()
@@ -24,7 +22,7 @@ class Card {
         $player2 = array(
             'name' => 'Emmanuel',
             'imgURL' => './img/user_pics/player2.png',
-            'hands' => array(),
+            'hand' => array(),
             'points' => 0
             );
         
@@ -47,6 +45,10 @@ class Card {
             $player3, 
             $player4
             );
+            
+        //Assigns a hand to each player    
+        $allPlayers = drawHand($allPlayers);
+            
         return $allPlayers;
     }
     
@@ -54,8 +56,14 @@ class Card {
     {
         foreach ($allPlayers as $player) 
         {
-            echo "<img src= '".$player['imgURL']."'/>";
-            echo $player['name']."<br/>";
+            //Get rid of width and height, just used for testing purposes
+            echo "<br/>".$player['name']."<br/>";
+            echo "<img src= '".$player['imgURL']."' width= '300px' height= '300px'/>";
+            
+            displayHand($player);
+            
+            //Just for test purposes
+            echo $player['points'];
         }
     }
     
@@ -83,26 +91,27 @@ class Card {
         foreach ($deck as $card){
             $value = $card['value'];
             $suit = $card['suit'];
-            
-            //Displays deck to be sure the deck generates correctly
-            echo "<img class= 'cards' src='img/cards/$suit/$value.png' alt= '$value of $suit'/>";
         }
     }
     
-    function drawCards()
+    function drawHand($allPlayers)
     {
         global $deck;
         
         for($i = 0; $i<4; $i++)
         {
+            $currHand = array();
             $sum = 0;
             while($sum<=37)
             {
                 $currCard = array_pop($deck);
                 $sum = $sum + $currCard['value']." ";
+                array_push($currHand, $currCard);
             }
-            
-            echo $sum;
+            $allPlayers[$i]['hand'] = $currHand;
+            $allPlayers[$i]['points'] = $sum;
         }
+        return $allPlayers;
     }
+    
 ?>
