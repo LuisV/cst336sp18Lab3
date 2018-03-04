@@ -8,7 +8,9 @@ class Card {
     {
         $allPlayers = playerArray();
         printGameStats($allPlayers);
-        drawHand($allPlayers);
+        drawHand($allPlayers); 
+        //displayHand($player);
+       Winner($allPlayers);
     }
     
     function playerArray()
@@ -122,4 +124,18 @@ class Card {
                 echo "<img class= 'cards' src='img/cards/$suit/$value.png' alt= '$value of $suit'/>";
             }
     }
+    function Winner($allPlayers)
+    {
+        $difference =100;
+        $winner=[];
+        foreach ($allPlayers as $value) {
+            if(42-$value['points']>=0 && 42-$value['points']< $difference)
+            {
+                $difference= 42-$value['points'];
+                $winner = $value ;
+            }
+        }
+        print $winner['name']." wins with ".$winner['points']."!". " \n";
+    }
+
 ?>

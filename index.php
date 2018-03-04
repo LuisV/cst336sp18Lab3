@@ -12,6 +12,7 @@ include './inc/functions.php';
     </head>
     
     <body>
+        <h1> Silver Jack </h1>
         <?php 
             play();
         ?>
