@@ -1,18 +1,47 @@
-body{
-    font-size:  100%;
-    font-family: fantasy;
-    background-color: black;
-    color: white;
 
-}
-h1{
+body {
+    background: url("https://impalastudios.com/images/background/background-Solitaire-1463061812-2000x2000.png") no-repeat center;
+    background-color: #003100;
+    height: 950px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 40px;
     text-align: center;
+    
+
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    
 }
-img{
-    width:60px;
-    height:80px;
+
+.cards{
+    height: 100px;
 }
+
+.points{
+    position: relative;
+    bottom: 45px;
+    text-shadow: 3px 2px black;
+    
+    font-size: 50px;
+    display: inline;
+}
+
 #winner{
-    font-size: 300%;
-    color:red;
+    text-shadow: 3px 2px black;
+    font-size: 90px;
+    color: pink;
+    ;text-decoration: underline;
+}
+
+.playerData {
+    width: 50%;
+}
+.playerPic {
+    height: 200px;
+    width: 160px;
+    border: 10px dotted #6BF;
+    
 }

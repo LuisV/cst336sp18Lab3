@@ -8,9 +8,7 @@ class Card {
     {
         $allPlayers = playerArray();
         printGameStats($allPlayers);
-        drawHand($allPlayers); 
-        //displayHand($player);
-       Winner($allPlayers);
+        drawHand($allPlayers);
     }
     
     function playerArray()
@@ -56,19 +54,22 @@ class Card {
     
     function printGameStats($allPlayers) 
     {
+        
         foreach ($allPlayers as $player) 
         {
+            echo "<div class= 'playerData'>";
             //Get rid of width and height, just used for testing purposes
             echo "<br/>".$player['name']."<br/>";
-            echo "<img src= '".$player['imgURL']."' width= '300px' height= '300px'/>";
+            echo "<img class='playerPic' src= '".$player['imgURL']."' width= '300px' height= '300px'/>";
             
             displayHand($player);
             
             //Just for test purposes
-            echo $player['points'];
+            echo "<p class= 'points'>$player[points]</p>";
+            echo "</div>";
         }
+         determineWinner($allPlayers);
     }
-    
      # Professors generate Deck function from class
     function generateDeck() {
         $suits = array("clubs", "spades", "hearts", "diamonds");
@@ -124,18 +125,38 @@ class Card {
                 echo "<img class= 'cards' src='img/cards/$suit/$value.png' alt= '$value of $suit'/>";
             }
     }
-    function Winner($allPlayers)
+    
+    
+    function determineWinner($allPlayers)
     {
         $difference =100;
-        $winner=[];
-        foreach ($allPlayers as $value) {
-            if(42-$value['points']>=0 && 42-$value['points']< $difference)
+        $winner= array();
+        foreach ($allPlayers as $cursor) {
+            if(42-$cursor['points']>=0 && 42-$cursor['points'] <=$difference)
             {
-                $difference= 42-$value['points'];
-                $winner = $value ;
+                $difference=42-$cursor['points'];
+                if($cursor['points']!= $winner[0]['points'])
+                {
+                    $winner= array();
+                    
+                }
+                array_push($winner, $cursor);
             }
         }
-        print $winner['name']." wins with ".$winner['points']."!". " \n";
+        switch (count($winner)) {
+            case 0:
+                echo "<div id='winner'>No one wins! :c </div>";
+                break;
+            case 1:
+                echo "<div id='winner'>".$winner[0]['name']." wins with ".$winner[0]['points']."!</div>";
+                break;
+            case 2:
+            case 3:
+            case 4:
+                echo "<div id='winner'>It's a tie! </div>";
+                break;
+        }
+        
     }
 
 ?>
