@@ -130,8 +130,10 @@ class Card {
     function determineWinner($allPlayers)
     {
         $difference =100;
+        $points=0;
         $winner= array();
         foreach ($allPlayers as $cursor) {
+            $points+=$cursor['points'];
             if(42-$cursor['points']>=0 && 42-$cursor['points'] <=$difference)
             {
                 $difference=42-$cursor['points'];
@@ -148,12 +150,12 @@ class Card {
                 echo "<div id='winner'>No one wins! :c </div>";
                 break;
             case 1:
-                echo "<div id='winner'>".$winner[0]['name']." wins with ".$winner[0]['points']."!</div>";
+                echo "<div id='winner'>".$winner[0]['name']." wins ".$points." points!</div>";
                 break;
             case 2:
             case 3:
             case 4:
-                echo "<div id='winner'>It's a tie! </div>";
+                echo "<div id='winner'>It's a tie at ".$winner[0]['points']."points! </div>";
                 break;
         }
         
