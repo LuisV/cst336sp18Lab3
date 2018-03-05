@@ -54,7 +54,7 @@ class Card {
     
     function printGameStats($allPlayers) 
     {
-        
+        shuffle($allPlayers);
         foreach ($allPlayers as $player) 
         {
             echo "<div class= 'playerData'>";
